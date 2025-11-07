@@ -16,7 +16,7 @@ type LangContextType = {
   toggleLang: () => void;
   t: <K extends keyof TranslationKey>(
     namespace: K,
-    key?: keyof TranslationKey[K] & string
+    key?: K extends keyof TranslationKey ? keyof TranslationKey[K] & string : never
   ) => string;
   changeLanguage: (lang: Lang) => void;
 };
@@ -24,7 +24,14 @@ type LangContextType = {
 const LanguageContext = createContext<LangContextType>({
   lang: "en",
   toggleLang: () => {},
-  t: (namespace, key) => (key || namespace) as string,
+  t: (namespace, key) => {
+    if (!key) return namespace as string;
+    const translationsForNamespace = translations['en'][namespace as keyof TranslationKey];
+    if (translationsForNamespace && typeof translationsForNamespace === 'object' && key in translationsForNamespace) {
+      return translationsForNamespace[key as keyof typeof translationsForNamespace] as string;
+    }
+    return key as string;
+  },
   changeLanguage: () => {},
 });
 
