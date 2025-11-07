@@ -1,5 +1,6 @@
 // Common translations that are used across the application
 export type CommonTranslations = {
+  logo: string;
   about: string;
   skills: string;
   projects: string;
