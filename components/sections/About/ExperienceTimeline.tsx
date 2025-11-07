@@ -24,8 +24,10 @@ export default function ExperienceTimeline() {
   const experienceItems = t("about", "experienceItems") as unknown as ExperienceItem[];
   
   // Replace {{present}} with the translated "Present" text
-  const presentText = t("about", "experience.present");
-  const formattedExperienceItems = experienceItems.map(item => ({
+  const presentText = t("about", "experience_present");
+  
+  // Ensure experienceItems is an array before mapping
+  const formattedExperienceItems = (Array.isArray(experienceItems) ? experienceItems : []).map(item => ({
     ...item,
     year: item.year.replace('{{present}}', presentText),
     icon: item.type ? icons[item.type] : Briefcase,

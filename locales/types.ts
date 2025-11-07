@@ -26,14 +26,12 @@ export type AuthTranslations = {
 export type ContactTranslations = {
   title: string;
   subtitle: string;
-  form: {
-    name: string;
-    email: string;
-    message: string;
-    submit: string;
-    success: string;
-    error: string;
-  };
+  form_name: string;
+  form_email: string;
+  form_message: string;
+  form_submit: string;
+  form_success: string;
+  form_error: string;
   socialMedia: string;
 };
 
@@ -55,14 +53,10 @@ export type AboutTranslations = {
   highlight2: string;
   highlight3: string;
   description2: string;
-  skills: {
-    title: string;
-    description: string;
-  };
-  experience: {
-    title: string;
-    present: string;
-  };
+  skills_title: string;
+  skills_description: string;
+  experience_title: string;
+  experience_present: string;
   experienceItems: readonly ExperienceItem[];
 };
 
@@ -97,21 +91,17 @@ export type ProjectsTranslations = {
 // Achievements section translations
 export type AchievementsTranslations = {
   title: string;
-  categories: {
-    all: string;
-    career: string;
-    award: string;
-    certificate: string;
-    personal: string;
-    [key: string]: string; // For any other categories
-  };
+  categories_all: string;
+  categories_career: string;
+  categories_award: string;
+  categories_certificate: string;
+  categories_personal: string;
   [key: string]: any; // For any other properties
 };
 
 // Main translation type that combines all namespaces
 export interface TranslationKey {
   common: CommonTranslations;
-  auth: AuthTranslations;
   contact: ContactTranslations;
   about: AboutTranslations;
   hero: HeroTranslations;

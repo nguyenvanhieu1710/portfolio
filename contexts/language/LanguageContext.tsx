@@ -14,14 +14,17 @@ const translations: Translations = {
 type LangContextType = {
   lang: Lang;
   toggleLang: () => void;
-  t: (namespace: keyof TranslationKey, key?: string) => string;
+  t: <K extends keyof TranslationKey>(
+    namespace: K,
+    key?: keyof TranslationKey[K] & string
+  ) => string;
   changeLanguage: (lang: Lang) => void;
 };
 
 const LanguageContext = createContext<LangContextType>({
   lang: "en",
   toggleLang: () => {},
-  t: (namespace, key) => key || namespace,
+  t: (namespace, key) => (key || namespace) as string,
   changeLanguage: () => {},
 });
 

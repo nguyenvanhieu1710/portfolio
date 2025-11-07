@@ -113,7 +113,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 │       └── Skills/
 │
 ├── contexts/                    # React contexts
-│   └── LanguageContext.tsx      # i18n implementation
+│   └── LanguageContext.tsx      
 │
 ├── data/                        # Static data
 │   ├── achievements.ts
