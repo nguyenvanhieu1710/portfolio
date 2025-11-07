@@ -1,8 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import type { Lang, Translations, TranslationKey } from "@/locales/types";
-
-// Import translations
 import enTranslations from "@/locales/en/index";
 import viTranslations from "@/locales/vi/index";
 

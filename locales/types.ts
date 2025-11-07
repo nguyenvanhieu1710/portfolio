@@ -64,6 +64,7 @@ export type AboutTranslations = {
 // Hero section translations
 export type HeroTranslations = {
   greeting: string;
+  name: string;
   title: string;
   description: string;
   cta: string;
