@@ -1,0 +1,13 @@
+{
+  "title": "Get in Touch",
+  "subtitle": "Leave me a message or connect with me on the platforms below ✨",
+  "form": {
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "submit": "Send Message",
+    "success": "Thank you! Your message has been sent.",
+    "error": "There was an error sending your message. Please try again later."
+  },
+  "socialMedia": "Find me on social media"
+}

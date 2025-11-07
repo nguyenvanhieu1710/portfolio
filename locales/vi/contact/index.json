@@ -1,0 +1,13 @@
+{
+  "title": "Liên hệ với tôi",
+  "subtitle": "Hãy để lại lời nhắn hoặc kết nối qua các nền tảng bên dưới ✨",
+  "form": {
+    "name": "Họ và tên",
+    "email": "Email của bạn",
+    "message": "Nội dung tin nhắn",
+    "submit": "Gửi tin nhắn",
+    "success": "Cảm ơn bạn! Tin nhắn đã được gửi thành công.",
+    "error": "Đã xảy ra lỗi khi gửi tin nhắn. Vui lòng thử lại sau."
+  },
+  "socialMedia": "Kết nối với tôi qua mạng xã hội"
+}
