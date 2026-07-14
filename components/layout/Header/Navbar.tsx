@@ -36,7 +36,7 @@ export default function Navbar() {
         "fixed top-0 left-0 w-full z-50 transition-all",
         scrolled
           ? "bg-white/70 dark:bg-gray-900/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -45,7 +45,8 @@ export default function Navbar() {
           href="/"
           className="text-xl font-bold text-indigo-600 dark:text-indigo-400"
         >
-          {t("common", "logo")}<span className="text-gray-800 dark:text-gray-200">.dev</span>
+          {t("common", "logo")}
+          <span className="text-gray-800 dark:text-gray-200">.dev</span>
         </Link>
 
         {/* Desktop menu */}
@@ -69,8 +70,10 @@ export default function Navbar() {
           {/* Language toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-2 px-2 py-1 rounded-lg text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition"
-            title={lang === "en" ? "Switch to Vietnamese" : "Chuyển sang tiếng Anh"}
+            className="flex items-center gap-2 px-2 py-1 rounded-lg text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition cursor-pointer"
+            title={
+              lang === "en" ? "Switch to Vietnamese" : "Chuyển sang tiếng Anh"
+            }
           >
             <Globe size={18} />
             <motion.span
@@ -87,7 +90,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>

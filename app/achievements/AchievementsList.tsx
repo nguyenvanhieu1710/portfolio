@@ -7,7 +7,26 @@ import * as LucideIcons from "lucide-react";
 import { Separator } from "@radix-ui/react-separator";
 import { useLang } from "@/contexts/language/LanguageContext";
 
-const categoryKeys = ["all", "career", "award", "certificate", "personal"];
+const categoryKeys = [
+  "all",
+  "honor",
+  "award",
+  "certificate",
+  "career",
+  "personal",
+];
+
+const categoryColors: Record<string, string> = {
+  honor:
+    "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+  award:
+    "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+  certificate:
+    "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+  career:
+    "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  personal: "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300",
+};
 
 export default function AchievementsList() {
   const { t } = useLang();
@@ -36,7 +55,7 @@ export default function AchievementsList() {
             <button
               key={key}
               onClick={() => setSelected(key)}
-              className={`px-3 py-1 rounded-full border transition-all ${
+              className={`px-3 py-1 rounded-full border transition-all cursor-pointer ${
                 selected === key
                   ? "bg-blue-600 text-white border-blue-600"
                   : "border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -57,8 +76,7 @@ export default function AchievementsList() {
       {/* Timeline items */}
       <div className="relative border-l border-gray-300 dark:border-gray-700">
         {filtered.map((item, idx) => {
-          const Icon =
-            (LucideIcons as any)[item.icon] || LucideIcons.Award;
+          const Icon = (LucideIcons as any)[item.icon] || LucideIcons.Award;
 
           return (
             <motion.div
@@ -81,7 +99,9 @@ export default function AchievementsList() {
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-1">
                   {item.description}
                 </p>
-                <span className="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-md mt-2">
+                <span
+                  className={`inline-block text-xs px-2 py-1 rounded-md mt-2 ${categoryColors[item.category.toLowerCase()] ?? "bg-blue-100 text-blue-700"}`}
+                >
                   {item.category}
                 </span>
               </div>

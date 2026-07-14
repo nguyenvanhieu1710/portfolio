@@ -1,4 +1,4 @@
-# Hieu Nguyen - Portfolio
+# Nguyen Van Hieu - Portfolio
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -8,53 +8,54 @@
 
 A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. This project showcases my professional journey, technical skills, and project portfolio with a focus on performance, accessibility, and user experience.
 
+🌐 **Live**: [nvhieu.vercel.app](https://nvhieu.vercel.app)
+
 ## ✨ Key Features
 
 ### 🌍 Internationalization
+
 - Bilingual support (English & Vietnamese)
 - Client-side language switching
-- SEO-friendly URL routing
-- RTL layout support ready
+- Persistent language preference
 
 ### 🎨 Theming System
+
 - Dark/Light mode with system preference detection
 - Smooth theme transitions
 - Persistent user preferences
-- Customizable color schemes
 
 ### 🚀 Performance Optimizations
+
 - Static Site Generation (SSG) for fast page loads
 - Code splitting and lazy loading
 - Optimized images and assets
-- Minimal JavaScript bundle size
 
 ### 📱 Responsive Design
+
 - Mobile-first approach
 - Adaptive layouts for all screen sizes
 - Touch-friendly interactions
-- Optimized typography and spacing
 
 ### ✨ Interactive Elements
-- Smooth page transitions
-- Micro-interactions
-- Animated UI components
-- Scroll-based animations
+
+- Smooth page transitions with Framer Motion
+- Micro-interactions and scroll-based animations
 
 ## 🛠️ Technology Stack
 
 ### Core Technologies
-- **Framework**: Next.js 14 (App Router)
+
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript 5.0+
-- **Styling**: Tailwind CSS 3.3+
-- **Animations**: Framer Motion 10.0+
-- **Icons**: Lucide Icons
-- **Form Handling**: React Hook Form
+- **Styling**: Tailwind CSS 4.0+
+- **Animations**: Framer Motion 12.0+
+- **Icons**: Lucide React
 - **State Management**: React Context API
 
 ### Development Tools
+
 - **Package Manager**: npm
 - **Linting**: ESLint
-- **Code Formatting**: Prettier
 - **Version Control**: Git
 - **Deployment**: Vercel
 
@@ -63,28 +64,27 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 ### Prerequisites
 
 - Node.js 18.0.0 or later
-- pnpm 8.0.0 or later
+- npm 9.0.0 or later
 
 ### Local Development
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/nguyenvanhieu1710/portfolio.git
    cd portfolio
    ```
 
-2. Install dependencies:
+2. **Install dependencies**
+
    ```bash
    npm install
-   # or
-   yarn install
    ```
 
-3. Start the development server:
+3. **Start the development server**
+
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -98,13 +98,12 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 │   ├── achievements/            # Professional achievements
 │   ├── contact/                 # Contact form and social links
 │   ├── projects/                # Project showcase
-│   └── skills/                  # Technical skills and expertise
+│   ├── skills/                  # Technical skills and expertise
+│   ├── robots.ts                # SEO robots config
+│   └── sitemap.ts               # SEO sitemap
 │
 ├── components/
-│   ├── layout/                  # Layout components
-│   │   ├── Header/
-│   │   └── Footer/
-│   │
+│   ├── layout/                  # Layout components (Navbar, etc.)
 │   └── sections/                # Page sections
 │       ├── About/
 │       ├── Contact/
@@ -113,7 +112,8 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 │       └── Skills/
 │
 ├── contexts/                    # React contexts
-│   └── LanguageContext.tsx      
+│   └── language/
+│       └── LanguageContext.tsx
 │
 ├── data/                        # Static data
 │   ├── achievements.ts
@@ -130,46 +130,31 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 
 ## 🌍 Internationalization
 
-The project features a custom solution with the following structure:
+Custom i18n solution with full TypeScript support:
 
-1. **Translation Files**: Organized by language code (en, vi) and feature
-2. **Type Safety**: Full TypeScript support for translation keys
-3. **Dynamic Loading**: Only loads the required language bundle
-4. **SEO Optimized**: Proper hreflang tags and metadata
+1. **Translation Files**: Organized by language (`en`, `vi`) and namespace
+2. **Type Safety**: Strongly typed translation keys via `locales/types.ts`
+3. **Language Context**: Client-side switching with `localStorage` persistence
 
 To add a new language:
 
 1. Create a new directory in `locales/` (e.g., `fr/`)
 2. Add translation files following the existing structure
-3. Update the language context and configuration
+3. Register the new locale in `LanguageContext.tsx`
 
 ## 🎨 Theming System
 
-The theming system is built with the following features:
-
 - **Theme Provider**: `next-themes` for theme management
 - **Color Modes**: Light, dark, and system preference
-- **CSS Variables**: Dynamic theming with CSS custom properties
 - **Smooth Transitions**: Theme switching with animations
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📬 Contact
 
-- **Email**: contact.hieunguyen.work@gmail.com
-- **LinkedIn**: [Nguyễn Văn Hiếu](https://linkedin.com/in/nguyen-van-hieu-5bb863313)
+- **Email**: hieunv.dev.work@gmail.com
+- **LinkedIn**: [Nguyen Van Hieu](https://linkedin.com/in/nguyen-van-hieu-5bb863313)
 - **GitHub**: [nguyenvanhieu1710](https://github.com/nguyenvanhieu1710)
+- **Portfolio**: [nvhieu.vercel.app](https://nvhieu.vercel.app)
 
 ---
 
-Built with ❤️ by [Hieu Nguyen](https://github.com/nguyenvanhieu1710)
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Framer Motion Documentation](https://www.framer.com/motion/)
-
-Made with ❤️ by Hieu Nguyen
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Built with ❤️ by [Nguyen Van Hieu](https://nvhieu.vercel.app)

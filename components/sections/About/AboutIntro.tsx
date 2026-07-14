@@ -37,14 +37,10 @@ export default function AboutIntro() {
       >
         <h2 className="text-4xl font-bold mb-4">
           {t("about", "intro")}
-          <span className="text-indigo-500">Hieu Nguyen</span>
+          <span className="text-indigo-500">{t("hero", "name")}</span>
         </h2>
         <p className="text-gray-600 dark:text-gray-300 max-w-xl">
           {t("about", "description")}
-          <strong>{t("about", "highlight1")}</strong>,
-          <strong> {t("about", "highlight2")}</strong> và 
-          <strong> {t("about", "highlight3")}</strong>.
-          {t("about", "description2")}
         </p>
       </motion.div>
     </section>

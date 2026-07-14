@@ -1,25 +1,31 @@
-"use client";
+import type { Metadata } from "next";
+import ContactPageClient from "./ContactPageClient";
 
-import { useLang } from "@/contexts/language/LanguageContext";
-import ContactForm from "@/components/sections/Contact/ContactForm";
-import SocialLinks from "@/components/shared/SocialLinks";
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Nguyen Van Hieu — send a message or connect via GitHub, LinkedIn, or Email.",
+  keywords: [
+    "contact",
+    "hire developer",
+    "get in touch",
+    "Nguyen Van Hieu",
+    "fullstack developer Vietnam",
+  ],
+  openGraph: {
+    title: "Contact | Nguyen Van Hieu",
+    description:
+      "Get in touch with Nguyen Van Hieu — send a message or connect via GitHub, LinkedIn, or Email.",
+    url: "/contact",
+    images: [
+      { url: "/avatar.jpg", width: 400, height: 400, alt: "Nguyen Van Hieu" },
+    ],
+  },
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function ContactPage() {
-  const { t } = useLang();
-  
-  return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-indigo-50/20 to-white dark:from-gray-950 dark:via-gray-900/50 dark:to-gray-950 py-20">
-      <section className="text-center mb-12 px-6">
-        <h2 className="text-3xl font-bold mb-3">
-          {t("contact", "title")}
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t("contact", "subtitle")}
-        </p>
-      </section>
-
-      <ContactForm />
-      <SocialLinks />
-    </main>
-  );
+  return <ContactPageClient />;
 }

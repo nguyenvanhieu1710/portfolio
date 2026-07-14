@@ -31,6 +31,7 @@ export type ContactTranslations = {
   form_email: string;
   form_message: string;
   form_submit: string;
+  form_sending: string;
   form_success: string;
   form_error: string;
   socialMedia: string;
@@ -41,7 +42,7 @@ export type ExperienceItem = Readonly<{
   year: string;
   title: string;
   place: string;
-  type: 'work' | 'education';
+  type: "work" | "education";
   description: string;
 }>;
 
@@ -59,6 +60,17 @@ export type AboutTranslations = {
   experience_title: string;
   experience_present: string;
   experienceItems: readonly ExperienceItem[];
+  info_title: string;
+  info_phone: string;
+  info_dob: string;
+  info_email: string;
+  info_website: string;
+  info_location: string;
+  education_title: string;
+  education_school: string;
+  education_period: string;
+  education_major: string;
+  education_gpa: string;
 };
 
 // Hero section translations
@@ -74,20 +86,28 @@ export type HeroTranslations = {
 export type SkillsTranslations = {
   title: string;
   description: string;
+  technologies_title: string;
+  technologies_description: string;
+  soft_skills_title: string;
+  soft_skills_description: string;
   categories: {
     frontend: string;
     backend: string;
     database: string;
-    devops: string;
-    concepts: string;
+    tools: string;
   };
-  [key: string]: any; // For any other properties
+  [key: string]: any;
 };
 
 // Projects section translations
 export type ProjectsTranslations = {
   title: string;
-  [key: string]: any; // For any other properties
+  work_title: string;
+  work_description: string;
+  personal_title: string;
+  personal_description: string;
+  view_project: string;
+  [key: string]: any;
 };
 
 // Achievements section translations
@@ -113,7 +133,7 @@ export interface TranslationKey {
   [key: string]: any; // For any other namespaces
 }
 
-export type Lang = 'en' | 'vi';
+export type Lang = "en" | "vi";
 
 export type Translations = {
   [key in Lang]: TranslationKey;
