@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
 import { Building2, Calendar } from "lucide-react";
 import type { Project } from "@/data/projects";
@@ -28,16 +29,75 @@ export default function ProjectCard({
   const displayBullets = lang === "vi" ? bulletsVi : bullets;
   const displayRole = lang === "vi" ? roleVi : role;
 
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Spotlight position
+  const [spotlight, setSpotlight] = useState({ x: 0, y: 0, visible: false });
+
+  // Tilt values
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(rawY, [-0.5, 0.5], [8, -8]), {
+    stiffness: 300,
+    damping: 30,
+  });
+  const rotateY = useSpring(useTransform(rawX, [-0.5, 0.5], [-8, 8]), {
+    stiffness: 300,
+    damping: 30,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    rawX.set(x - 0.5);
+    rawY.set(y - 0.5);
+    setSpotlight({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      visible: true,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    rawX.set(0);
+    rawY.set(0);
+    setSpotlight((s) => ({ ...s, visible: false }));
+  };
+
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-indigo-500/20 hover:border-indigo-200 dark:hover:border-indigo-800 overflow-hidden group flex flex-col gap-4 transition-all h-full"
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+        perspective: 800,
+      }}
+      className="relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-indigo-500/20 hover:border-indigo-200 dark:hover:border-indigo-800 overflow-hidden group flex flex-col gap-4 transition-[border-color,box-shadow] h-full cursor-default"
     >
+      {/* Spotlight */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300"
+        style={{
+          opacity: spotlight.visible ? 1 : 0,
+          background: spotlight.visible
+            ? `radial-gradient(300px circle at ${spotlight.x}px ${spotlight.y}px, rgba(99,102,241,0.12), transparent 70%)`
+            : "none",
+        }}
+      />
+
+      {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
 
       {/* Title + icon */}
-      <div className="flex items-start gap-3">
+      <div
+        className="flex items-start gap-3"
+        style={{ transform: "translateZ(20px)" }}
+      >
         <div className="flex-shrink-0 mt-0.5 w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-500">
           <Icon size={20} />
         </div>

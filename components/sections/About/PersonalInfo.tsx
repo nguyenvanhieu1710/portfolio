@@ -1,6 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { Phone, Calendar, Mail, Globe, MapPin, GraduationCap } from "lucide-react";
+import {
+  Phone,
+  Calendar,
+  Mail,
+  Globe,
+  MapPin,
+  GraduationCap,
+} from "lucide-react";
 import Link from "next/link";
 import { useLang } from "@/contexts/language/LanguageContext";
 
@@ -18,10 +25,22 @@ export default function PersonalInfo() {
   const { t } = useLang();
 
   const infoItems = [
-    { icon: Phone, label: t("about", "info_phone"), href: `tel:${t("about", "info_phone").replace(/\s/g, "")}` },
+    {
+      icon: Phone,
+      label: t("about", "info_phone"),
+      href: `tel:${t("about", "info_phone").replace(/\s/g, "")}`,
+    },
     { icon: Calendar, label: t("about", "info_dob"), href: null },
-    { icon: Mail, label: t("about", "info_email"), href: `mailto:${t("about", "info_email")}` },
-    { icon: Globe, label: t("about", "info_website"), href: t("about", "info_website") },
+    {
+      icon: Mail,
+      label: t("about", "info_email"),
+      href: `mailto:${t("about", "info_email")}`,
+    },
+    {
+      icon: Globe,
+      label: t("about", "info_website"),
+      href: t("about", "info_website"),
+    },
     { icon: MapPin, label: t("about", "info_location"), href: null },
   ];
 
@@ -45,7 +64,10 @@ export default function PersonalInfo() {
           </h3>
           <ul className="space-y-3">
             {infoItems.map(({ icon: Icon, label, href }) => (
-              <li key={label} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+              <li
+                key={label}
+                className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300"
+              >
                 <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center">
                   <Icon size={15} className="text-indigo-500" />
                 </span>
@@ -53,7 +75,11 @@ export default function PersonalInfo() {
                   <Link
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    rel={
+                      href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="hover:text-indigo-500 transition truncate cursor-pointer"
                   >
                     {label}

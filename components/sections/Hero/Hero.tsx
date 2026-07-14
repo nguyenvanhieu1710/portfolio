@@ -2,15 +2,19 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import GradientText from "../../shared/GradientText";
-import FloatingIcons from "./FloatingIcons";
+import ParticleBackground from "./ParticleBackground";
+import Typewriter from "./Typewriter";
+import MagneticButton from "./MagneticButton";
 import { useLang } from "@/contexts/language/LanguageContext";
 
 export default function Hero() {
   const { t } = useLang();
   const router = useRouter();
+
+  const typewriterTexts = [t("hero", "title"), t("hero", "description")];
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[90vh] text-center overflow-hidden">
-      <FloatingIcons />
+      <ParticleBackground />
 
       <motion.div
         className="relative w-36 h-36 rounded-full mx-auto mb-8 group"
@@ -42,19 +46,17 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl font-bold">
           {t("hero", "greeting")} <GradientText text={t("hero", "name")} />
         </h1>
-        <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          {t("hero", "title")} • {t("hero", "description")}
+        <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto min-h-[1.75rem]">
+          <Typewriter texts={typewriterTexts} />
         </p>
       </motion.div>
 
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+      <MagneticButton
         className="mt-10 px-6 py-3 bg-indigo-600 text-white rounded-full font-medium shadow-md hover:bg-indigo-500 transition cursor-pointer"
         onClick={() => router.push("/projects")}
       >
         {t("hero", "cta")}
-      </motion.button>
+      </MagneticButton>
     </section>
   );
 }
