@@ -19,6 +19,7 @@ export default function AboutIntro() {
             src="/avatar.jpg"
             alt="Hieu Nguyen"
             fill
+            sizes="192px"
             className="object-cover"
           />
         </div>
